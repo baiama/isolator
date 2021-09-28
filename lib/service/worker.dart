@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:isolate';
 
-import 'package:flutter/material.dart';
-
 class MyWorker {
   late Isolate _isolate;
   late ReceivePort _receivePort;
@@ -27,12 +25,15 @@ class MyWorker {
     await Future.delayed(const Duration(seconds: 2));
     print('end delay');
     if (message is SendPort) {
-      message.send("work end");
+      message.send("yo22");
     }
     message.send("work end");
   }
 
   void _handleMessage(message) {
     print("handle message $message");
+    if (message is String && message == 'yo22') {
+      dispose();
+    }
   }
 }
