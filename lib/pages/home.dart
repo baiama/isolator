@@ -10,10 +10,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late MyWorker _worker;
   @override
   void initState() {
     super.initState();
-    MyWorker();
+    _worker = MyWorker();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _worker.dispose();
   }
 
   @override
