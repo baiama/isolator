@@ -36,9 +36,12 @@ class MyWorker {
     ReceivePort receivePort = ReceivePort();
     receivePort.listen((message) async {
       if (message is List<String>) {
-        List<String> tasks = message;
-        print(tasks);
-        for (String task in tasks) {
+        print(message.length);
+        List<String> items = message as List<String>;
+        print(items);
+        print(items.length);
+        for (String task in items) {
+          print('task $task');
           await Future.delayed(const Duration(seconds: 10));
           sendPort.send(task);
         }

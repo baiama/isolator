@@ -5,7 +5,7 @@ class DataHelper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? tasks = prefs.getStringList("tasks");
     if (tasks == null || tasks.isEmpty) {
-      await prefs.setStringList('tasks', ['1, 2, 3']);
+      await prefs.setStringList('tasks', ['1', '2', '3']);
     }
   }
 
