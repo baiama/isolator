@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isolator/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,6 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Home()));
+              },
+              child: const Text('press'),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
