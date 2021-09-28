@@ -1,11 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DataHelper {
-  void setUpData() async {
+  Future<void> setUpData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? tasks = prefs.getStringList("tasks");
-    if (tasks == null && tasks!.isEmpty) {
-      await prefs.setStringList('task_1', ['1, 2, 3']);
+    if (tasks == null || tasks.isEmpty) {
+      await prefs.setStringList('tasks', ['1, 2, 3']);
     }
   }
 
@@ -16,5 +16,14 @@ class DataHelper {
       return tasks;
     }
     return [];
+  }
+
+  void setData(String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> items = await data;
+    if (items.isNotEmpty) {
+      items.removeWhere((element) => element == value);
+    }
+    await prefs.setStringList('tasks', items);
   }
 }
